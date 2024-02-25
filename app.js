@@ -1,14 +1,14 @@
-Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
-        fullName: "Ali",
-        email: "",
-        phone: "",
-        subject: "",
-        text: ""
+            display: "all"
         }
     },
     methods: {
-        
+        handleTabs(tab){
+            this.display = tab;
+        }
     },
-}).mount("#app")
+});
+
+app.mount("#app");

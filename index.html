@@ -2,79 +2,62 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CodeYad-Vue</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <style>
-        .progress{
-            position: relative;
-            width: 400px;
-            height: 9px;
-            background: gray;
-            border-radius: 5px;
-        }
-        .progressInner{
-            position: absolute;
-            height: 9px;
-            z-index: 2;
-            top: 0;
-            left: 0;
-            width: 10%;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(128, 128, 128, 0.514);
-        }
-        .btn{
-            padding: 12px;
-            border-radius: 10px;
-            margin: 10px;
-            width: 150px;
-            background: rgb(7, 158, 7);
-            color: white;
-            border: 1px solid gray;
-            
-        }
-        .red{
-            background-color: red;
-        }
-        .orange{
-            background-color: orange;
-        }
-        .green{
-            background-color: green;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
+    <div id="app" class="container pt-4">
+        <div id="navigation ">
+            <ul class="nav-list">
+                <li @click="handleTabs('all')" :class="{'active': display==='all'}"  >نمایش همه</li>
+                <li @click="handleTabs('search')" :class="{'active': display==='search'}" >جستوجو</li>
+                <li @click="handleTabs('add')" :class="{'active': display==='add'}" >افزودن مخاطب</li>
+            </ul>
+        </div>
+        <div class="panel" v-show="display === 'search'">
+            <h1>جستوجو مخاطبین</h1>
+            <form id="search" action="#">
+                <div id="results">
 
+                </div>
+                <div>
+                    <input type="text" name="search" id="search" placeholder="نام مخاطب را وارد کنید" />
+                </div>
+                <input type="submit" value="جستوجو" />
+            </form>
+        </div>
+        <div class="panel" v-show="display === 'add'">
+            <form action="#">
+                <h1>افزودن مخاطب</h1>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="">نام و نام خانوادگی :</label>
+                        <input type="text" name="person" id="name" placeholder="محمد اشرافی" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">شماره تماس :</label>
+                        <input type="text" name="phone" id="name" placeholder="09350000000" />
+                    </div>
+                    <div class="col-lg-12 mt-3">
+                        <label for=""> ایمیل :</label>
+                        <input type="text" name="email" id="name" placeholder="mohammad.ashrafi2020@outlook.com" />
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="ثبت مخاطب" />
+                </div>
+            </form>
+        </div>
+        <div class="panel" v-show="display === 'all'">
 
-    <div id="app">
-        <form action="">
-            <label for="fullName">name & family</label>
-            <input v-model="fullName" type="text" id="fullName">
-            <br>
-            <label for="email">email</label>
-            <input v-model="email" type="email" id="email">
-            <br/>
-            <label for="phone">phone</label>
-            <input v-model="phone" type="tel" id="phone">
-            <br>
-            <label for="subject">subject</label>
-            <input v-model="subject" type="text" id="subject">
-            <br>
-            <label for="text">text</label>
-            <textarea v-model="text" id="text" cols="30" rows="10"></textarea>
-            <br>
-            <button v-once>{{fullName}}</button>
-            <hr />
-            <div>
-                {{fullName}} - {{email}} - {{phone}} - {{subject}}
-                <p style="white-space: pre;">{{text}}</p>
-            </div>
-        </form>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
 
 </html>
-
