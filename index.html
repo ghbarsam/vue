@@ -65,7 +65,7 @@
             <label for="text">text</label>
             <textarea v-model="text" id="text" cols="30" rows="10"></textarea>
             <br>
-            <button>send</button>
+            <button v-once>{{fullName}}</button>
             <hr />
             <div>
                 {{fullName}} - {{email}} - {{phone}} - {{subject}}
