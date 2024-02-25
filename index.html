@@ -49,20 +49,32 @@
 
 
     <div id="app">
-        <div class="progress">
-            <div
-            :class="{
-            'progressInner':true,
-            'red':start,
-            'orange':center,
-            'green':end,
-        }"
-            :style="{width: percentage + '%'}"></div>
-            <button @mousemove="increase" class="btn">+</button>
-            <button @mousemove="decrease" class="btn">-</button>
-        </div>
+        <form action="">
+            <label for="fullName">name & family</label>
+            <input v-model="fullName" type="text" id="fullName">
+            <br>
+            <label for="email">email</label>
+            <input v-model="email" type="email" id="email">
+            <br/>
+            <label for="phone">phone</label>
+            <input v-model="phone" type="tel" id="phone">
+            <br>
+            <label for="subject">subject</label>
+            <input v-model="subject" type="text" id="subject">
+            <br>
+            <label for="text">text</label>
+            <textarea v-model="text" id="text" cols="30" rows="10"></textarea>
+            <br>
+            <button>send</button>
+            <hr />
+            <div>
+                {{fullName}} - {{email}} - {{phone}} - {{subject}}
+                <p style="white-space: pre;">{{text}}</p>
+            </div>
+        </form>
     </div>
     <script src="app.js"></script>
 </body>
 
 </html>
+
